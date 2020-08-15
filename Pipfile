@@ -1,0 +1,25 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+mypy = "*"
+pytest = "*"
+pytest-sugar = "*"
+pytest-cov = "*"
+pylint = "*"
+black = "*"
+pre-commit = "*"
+bpython = "*"
+ipdb = "*"
+ptvsd = "*"
+
+[packages]
+beautifulsoup4 = "*"
+python-dotenv = "*"
+
+[scripts]
+
+[requires]
+python_version = "3.8"
