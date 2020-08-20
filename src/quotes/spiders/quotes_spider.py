@@ -2,6 +2,12 @@ import scrapy
 
 
 class QuotesSpider(scrapy.Spider):
+    """ Web Scraping Spider for Goodreads website. """
+
+    # Class attributes
+    name = "quotes"
+    start_urls = ["https://www.goodreads.com/quotes?page=1"]
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.allowed_tag_categories = [
@@ -31,9 +37,13 @@ class QuotesSpider(scrapy.Spider):
             "books",
         ]
 
-    name = "quotes"
+    def sanitize_quote(self, quote_str):
+        """ Sanitizes the text from the quote string. """
+        pass
 
-    start_urls = ["https://www.goodreads.com/quotes?page=1"]
+    def sanitize_author(self, author_str):
+        """ Sanitizes the text from the author string. """
+        return author_str.replace(",", "")
 
     def sanitize_quote_tags(self, tags):
         """ Sanitizes and filters the tags comparing them to the allowed quote tags. """
@@ -56,9 +66,16 @@ class QuotesSpider(scrapy.Spider):
             ).getall()
 
             # Parse and clean
+            text = self.sanitize_quote(text)
+            authorName = self.sanitize_author(authorName)
             tags = self.sanitize_quote_tags(tags)
 
             yield dict(
                 text=text, authorName=authorName, authorImage=authorImage, tags=tags,
             )
+
+            # Scrape the next page
+            next_page = response.css("a.next_page::attr(href)").get()
+            if next_page is not None:
+                yield response.follow(next_page, self.parse)
 
