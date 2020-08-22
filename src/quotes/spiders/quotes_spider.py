@@ -25,10 +25,8 @@ class QuotesSpider(Spider):
             # Create an item loader with the quote data and add it as a new quote_item
 
             self.logger.info("Creating quote_item")
-
             loader = ItemLoader(item=QuotesItem(), selector=quote)
             loader.add_css("quote_content", ".quoteText::text")
-            print(loader.get_css(".quoteText::text"))
             loader.add_css("author_name", ".quoteText .authorOrTitle::text")
             loader.add_css("author_image", ".leftAlignedImage img::attr(src)")
             loader.add_css("tags", ".greyText.smallText.left a::text")
@@ -36,7 +34,7 @@ class QuotesSpider(Spider):
 
             yield quote_item
 
-            # # Scrape the next page
-            # next_page = response.css("a.next_page::attr(href)").get()
-            # if next_page is not None:
-            #     yield response.follow(next_page, self.parse)
+            # Scrape the next page
+            next_page = response.css("a.next_page::attr(href)").get()
+            if next_page is not None:
+                yield response.follow(next_page, self.parse)

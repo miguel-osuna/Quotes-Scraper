@@ -16,10 +16,13 @@ ipdb = "*"
 ptvsd = "*"
 
 [packages]
-beautifulsoup4 = "*"
 python-dotenv = "*"
+scrapy = "*"
 
 [scripts]
 
 [requires]
 python_version = "3.8"
+
+[packages.pymongo]
+extras = [ "srv", "tls",]
