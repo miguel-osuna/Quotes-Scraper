@@ -13,19 +13,6 @@ from scrapy.exceptions import DropItem
 logger = logging.getLogger(__name__)
 
 
-class JsonWriterPipeline:
-    def open_spider(self, spider):
-        self.file = open("quotes.jl", "w")
-
-    def close_spider(self, spider):
-        self.file.close()
-
-    def process_item(self, item, spider):
-        line = json.dumps(ItemAdapter(item).asdict()) + "\n"
-        self.file.write(line)
-        return item
-
-
 class MongoDBPipeline:
 
     collection_name = "quotes"

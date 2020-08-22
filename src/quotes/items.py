@@ -67,6 +67,8 @@ def sanitize_quote_tags(tag_list):
 
 
 class QuotesItem(Item):
+    """ Quotes Item model for QuotesSpider. """
+
     quote_content = Field(
         input_processor=Compose(sanitize_quote), output_processor=TakeFirst()
     )
