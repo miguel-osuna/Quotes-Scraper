@@ -32,7 +32,7 @@ class MongoDBPipeline:
         return cls(
             mongo_uri=crawler.settings.get("MONGO_URI"),
             mongo_db=crawler.settings.get("MONGO_DATABASE", "quotes_database"),
-            mongo_collection=crawler.settings.get("MONGO_COLLECTION", "quotes"),
+            mongo_collection=crawler.settings.get("MONGO_COLLECTION", "quote"),
         )
 
     def open_spider(self, spider):
