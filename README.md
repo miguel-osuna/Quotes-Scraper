@@ -17,7 +17,7 @@ You'll need Git, Python 3.7, Pip and a Virtual Environment (in this case, Pipenv
 ### :computer: Installation
 ```
 # Clone this repository
-$ git clone https://github.com/miguel-osuna/Simple-Social-App.git
+$ git clone https://github.com/miguel-osuna/Quotes-Scraper.git
 
 # Go into the repository from the terminal
 $ cd Simple-Social-App
