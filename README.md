@@ -20,7 +20,7 @@ You'll need Git, Python 3.7, Pip and a Virtual Environment (in this case, Pipenv
 $ git clone https://github.com/miguel-osuna/Quotes-Scraper.git
 
 # Go into the repository from the terminal
-$ cd Simple-Social-App
+$ cd Quotes-Scraper
 
 # Remove current origin repository
 $ git remote remove origin
